@@ -1,4 +1,5 @@
 # Baxter Chess Robot
+![Baxter playing chess](docs/images/baxter.jpg)
 
 A robotics project for playing physical chess with a Baxter robot. The repository combines:
 
