@@ -1,0 +1,55 @@
+services:
+  api:
+    build: .
+    container_name: chess-stockfish-api
+    command: /app/scripts/start-api.sh
+    environment:
+      STOCKFISH_PATH: /usr/games/stockfish
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./captures:/app/captures_fastapi_physical
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  controller:
+    build: .
+    container_name: chess-kinect-controller
+    command: /app/scripts/start-controller.sh
+    profiles:
+      - kinect
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      BASE_URL: http://api:8000
+      VIEWER_BASE_URL: http://127.0.0.1:8000
+      LIB_DIR: /usr/lib/x86_64-linux-gnu
+      OUTPUT_DIR: /app/captures_fastapi_physical
+      # Set to "black" if human plays black and Baxter/Stockfish plays white first.
+      # Set to "white" if human plays white and Baxter/Stockfish plays black.
+      HUMAN_COLOR: ${HUMAN_COLOR:-black}
+      ROBOT_LIMB: ${ROBOT_LIMB:-left}
+      DISPLAY: ${DISPLAY}
+      QT_X11_NO_MITSHM: "1"
+      # Optional: uncomment these to skip interactive prompts
+      # DIFFICULTY: M
+      # THINK_TIME: "0.5"
+      # Optional safety token for controller port 8765
+      # CONTROL_API_TOKEN: change-me
+    ports:
+      - "8765:8765"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ./captures:/app/captures_fastapi_physical
+      # Put extra local helper .py files here if they are not baked into the image.
+      - .:/app/project_mount:ro
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
+    privileged: true
+    stdin_open: true
+    tty: true

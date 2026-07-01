@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+.git/
+.gitignore
+captures/
+captures_fastapi_physical/
+*.png
+*.jpg
+*.jpeg
