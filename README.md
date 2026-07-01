@@ -146,13 +146,6 @@ cd ~/ros_ws/src/baxter-chess-robot
 CONTROL_URL=http://<KINECT_PC_IP>:8765 BAXTER_LIMB=left DRY_RUN=1 ./scripts/baxter_simple_terminal_loop.sh
 ```
 
-## Add your YouTube demo
-
-Edit this README and `docs/DEMO.md`, then replace the TODO with your YouTube URL. A good public README demo section usually includes:
-
-- A one-line video link.
-- A short description of what the viewer will see.
-- Any important limitations, for example manual calibration or constrained lighting.
 
 ## Safety notice
 
