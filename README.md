@@ -7,9 +7,17 @@ A robotics project for playing physical chess with a Baxter robot. The repositor
 - **Kinect + FastAPI chess controller** for detecting human moves, asking Stockfish for the robot move, and publishing Baxter-ready ROS commands.
 - **Bridge scripts** that connect the Kinect/Stockfish controller to the Baxter ROS workspace.
 
-> **Demo video:** TODO — paste your YouTube demonstration link here.
 
-## Repository layout
+
+## Demonstration and Procedure
+
+Use the following resources to learn how to set up and operate the Baxter Chess Robot:
+
+* **[Watch the demonstration video](https://youtube.com/shorts/tt5ExmPe8P8)**
+* **[Read the setup and operating procedure (PDF)](docs/Baxter_Chess_Robot_Procedure.pdf)**
+
+## Repository Layout
+
 
 ```text
 baxter-chess-robot/
