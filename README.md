@@ -1,4 +1,8 @@
 # Baxter Chess Robot
+
+* **[Watch the demonstration video](https://youtube.com/shorts/tt5ExmPe8P8)**
+* **[Read the setup and operating procedure (PDF)](docs/Baxter_Chess_Robot_Procedure.pdf)**
+
 ![Baxter playing chess](docs/images/baxter.jpg)
 
 A robotics project for playing physical chess with a Baxter robot. The repository combines:
